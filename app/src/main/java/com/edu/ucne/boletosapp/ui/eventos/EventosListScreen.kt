@@ -4,6 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -22,8 +24,14 @@ fun EventoListScreen(
     onEventoClick: (Int) -> Unit
 ){
     Scaffold(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(8.dp),
+        floatingActionButton = {
+            ExtendedFloatingActionButton(onClick = onNewEvento) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "Agregar evento")
+            }
+        },
         topBar = {
             TopAppBar(
                 title = { Text(text = "Lista de Eventos",
@@ -47,17 +55,18 @@ fun EventoListScreen(
 }
 
 @Composable
-fun EventoListBody(eventoList: List<EventosDto>, onEventoClick: (Int) -> Unit) {
+fun EventoListBody( eventoList: List<EventosDto>, onEventoClick: (Int) -> Unit) {
     Column(modifier = Modifier.fillMaxWidth()) {
         LazyColumn {
             items(eventoList) { evento ->
-                EventoRow(evento) {
+                EventoRow( evento = evento) {
                     onEventoClick(it)
                 }
             }
         }
     }
 }
+
 @Composable
 fun EventoRow(evento: EventosDto, onEventoClick: (Int) -> Unit) {
     Column(
@@ -73,7 +82,7 @@ fun EventoRow(evento: EventosDto, onEventoClick: (Int) -> Unit) {
         ) {
             Row() {
                 Text(
-                    text = evento.nombreEvento,
+                    text ="Nombre Evento: ${evento.nombreEvento}",
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.weight(3f)

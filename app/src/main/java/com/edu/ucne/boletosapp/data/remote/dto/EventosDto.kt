@@ -8,11 +8,11 @@ data class EventosDto(
     val ubicacion: String = ""
 
 )
-/*
+
 data class Evento(
     val Id: Int,
     val boletoId: Int,
     val nombreEvento: String,
     val fecha: String,
     val ubicacion: String
-)*/
+)

@@ -2,6 +2,8 @@ package com.edu.ucne.boletosapp.ui.eventos
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -42,6 +44,10 @@ fun EventoBody(
     var expanded by remember {
         mutableStateOf(false)
     }
+    val intNombreEventoSource = remember {
+        MutableInteractionSource()
+    }
+    val nombreEventoFocus by intNombreEventoSource.collectIsFocusedAsState()
     Card(
         modifier = Modifier
             .fillMaxWidth()
