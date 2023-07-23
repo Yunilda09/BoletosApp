@@ -1,5 +1,7 @@
 package com.edu.ucne.boletosapp.data.remote
 
+import com.edu.ucne.boletosapp.data.remote.dto.BoletosDto
+import com.edu.ucne.boletosapp.data.remote.dto.EventosDto
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -23,10 +25,12 @@ interface EventoApi {
     /* Evento */
     @GET("/list/evento")
     suspend fun getEvento(): List<EventosDto>
-
     @GET("/evento/{id}")
     suspend fun getEventoById(@Path("id") id: Int): EventosDto
-
+    @PUT("/evento/update/{id}")
+    suspend fun putEvento(@Path("id") id: Int, @Body eventosDto: EventosDto): List<EventosDto>
+    @GET("/evento/{id}")
+    suspend fun getEventobyId(@Path("id") id: Int): EventosDto
 
 
     /* Boleto */

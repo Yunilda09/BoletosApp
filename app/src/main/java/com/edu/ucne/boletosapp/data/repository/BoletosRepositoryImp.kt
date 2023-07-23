@@ -1,6 +1,6 @@
 package com.edu.ucne.boletosapp.data.repository
 
-import com.edu.ucne.boletosapp.data.remote.BoletosDto
+import com.edu.ucne.boletosapp.data.remote.dto.BoletosDto
 import com.edu.ucne.boletosapp.data.remote.EventoApi
 import com.edu.ucne.boletosapp.data.util.Resource
 import kotlinx.coroutines.flow.Flow

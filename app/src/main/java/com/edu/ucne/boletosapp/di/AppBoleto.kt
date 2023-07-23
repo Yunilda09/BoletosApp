@@ -14,8 +14,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
-
+        val BaseUrl = "http://192.168.0.107:8090"
     @Singleton
     @Provides
     fun providesMoshi(): Moshi {
@@ -26,7 +25,7 @@ object AppModule {
     @Provides
     fun providesUniqueApi(moshi: Moshi): EventoApi {
         return Retrofit.Builder()
-            .baseUrl("https://localhost:8090")
+            .baseUrl(BaseUrl)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(EventoApi::class.java)
